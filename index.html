@@ -1,0 +1,378 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zen-filter</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="zen-filter">Zen Filter</h1>
+<p><strong>Component Name:</strong>  ZenFilterComponent.<br>
+<strong>Module Name:</strong> Zen Core</p>
+<h2 id="introduction">Introduction</h2>
+<p>The Zen Filter component used to display filters in various places, such as storefront product lists and admin-side list pages.</p>
+<h2 id="sample-images">Sample Images</h2>
+<p><img src="https://i.ibb.co/NWr5hvX/image-2024-11-15-T12-22-11-382-Z.png" alt="enter image description here"><br>
+<img src="https://uat.us.images.getzenbasket.com/STORE_67/products/filterwithboxshadow_1725278247497_S67.png" alt="enter image description here"><br>
+<img src="https://uat.us.images.getzenbasket.com/STORE_67/products/filterHeaderwithourexpans_1725280988163_S67.png" alt="enter image description here"><br>
+<img src="https://uat.us.images.getzenbasket.com/STORE_67/products/filterwithoutborder_1725282630480_S67.png" alt="enter image description here"></p>
+<h2 id="filter-properties">Filter Properties</h2>
+<p><strong>1. @Input() filterDetails</strong><br>
+It is a required property to show filter data. It contains some basic properties like<br>
+title - Filter title.<br>
+type - Filter type (e.g, radio, checkbox).<br>
+keyToEmit- Filter output name.<br>
+and etc.<br>
+The remaining properties are explained in detail in <strong>filter types</strong>.<br>
+Example:</p>
+<pre><code>//Ts
+filterDetails: ZenFilterDetails[] = [
+{ 
+title:  'Choose Fruit',
+type:  ZenFilterTypes.RADIO,
+keyToEmit:  'choosenFruit', 
+disabled:  false,
+options: [
+{value:  'orange', label:  'Orange', isDefault:  false, disabled:  false},
+{ value:  'apple', label:  'Apple',  isDefault:  false, disabled:  false }
+]
+}]
+
+//Html
+&lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+</code></pre>
+<p><strong>2. @Input() filterHeader</strong><br>
+It is not required, but we can customize our filter headers using the below properties.<br>
+hideHeader -  It is used to hide filter header.<br>
+hideFilterHeading - It is used to hide filter heading.<br>
+heading - It is used to change filter heading name.<br>
+resetAllIconToolTip- It is used to change reset all icon tooltip name.<br>
+closeIconToolTip - It is used to change close icon tooltip name.<br>
+hideFilterCount - It is used to hide filter count.<br>
+emitWithOutButton - It is used to emit filter details without button.<br>
+filterSelectedMessage - It is used to change filter selected messages.<br>
+showSelectedFilter - It is used to selected filter label in chip.<br>
+applyButtonText -  //It is used to change apply button text<br>
+saveButtonText - //It is used to change save filter button text<br>
+resetIconToolTip - //It is used to change reset icon name in expansion</p>
+<pre><code>//Ts
+filterHeader: ZenFilterHeaders = { heading: 'My Filter', resetIconToolTip: 'Refresh filter', closeIconToolTip: 'Close filter', hideFilterCount: false, emitWithOutButton: false, showSelectedFilter: true, filterSelectedMessage: Filter Selected', hideHeader: false, hideFilterHeading: false}
+//Html
+&lt;zen-filter  [filterDetails]="filterData"  [filterHeader]="filterHeader"  (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+</code></pre>
+<p><img src="https://uat.us.images.getzenbasket.com/STORE_67/products/filterheader_1725273349669_S67.png" alt="enter image description here"></p>
+<p><strong>3. @Input() expansionProperty</strong><br>
+It is used to change the expansion panel design.  Its properties are mentioned below.<br>
+expandMultiple - used to open multiple expansion panels.<br>
+expandAllByDefault -  used to expand all expansion panels by default.<br>
+hideExpansion - used to hide the expansion panel.<br>
+hideFilterReset- used to hide the refresh icon in the expansion panel.<br>
+hideExpansionBorder - used to hide expansion panel border.<br>
+expansionWithBoxShadow - used to display expansion with box shadow.</p>
+<p><strong>Type 1:</strong></p>
+<pre><code>//ts
+expansionProperty: ZenFilterexpansionProperty = {
+    expandMultiple:  false,
+    expandAllByDefault:  false,
+    isPanelHidden:  false,
+    hideFilterReset:  false,
+    hideExpansionBorder:  false,
+    expansionWithBoxShadow:  false
+}
+//html
+&lt;zen-filter  [filterDetails]="filterData"  [filterHeader]="filterHeader"  (onFilterChange)="onFilterChange($event)" [expansionProperty]="expansionProperty"&gt;&lt;/zen-filter&gt;
+</code></pre>
+<p><img src="https://i.ibb.co/NWr5hvX/image-2024-11-15-T12-22-11-382-Z.png" alt="enter image description here"></p>
+<p><strong>Type2:</strong></p>
+<pre><code>//ts
+expansionProperty: ZenFilterexpansionProperty = {
+    expandMultiple:  false,
+    expandAllByDefault:  false,
+    isPanelHidden:  false,
+    hideFilterReset:  false,
+    hideExpansionBorder:  false,
+    expansionWithBoxShadow:  true
+}
+//html
+&lt;zen-filter  [filterDetails]="filterData"  [filterHeader]="filterHeader"  (onFilterChange)="onFilterChange($event)" [expansionProperty]="expansionProperty"&gt;&lt;/zen-filter&gt;
+</code></pre>
+<p><img src="!%5Bhttps://uat.us.images.getzenbasket.com/STORE_67/products/filterwithboxshadow_1725278247497_S67.png%5D(https://uat.us.images.getzenbasket.com/STORE_67/products/filterwithboxshadow_1725278247497_S67.png)" alt="enter image description here"></p>
+<p><strong>Type 3:</strong></p>
+<pre><code>//ts
+expansionProperty: ZenFilterexpansionProperty = {
+    expandMultiple:  true,
+    expandAllByDefault:  true,
+    isPanelHidden:  true,
+    hideFilterReset:  true,
+    hideExpansionBorder:  false,
+    expansionWithBoxShadow:  false
+}
+//html
+&lt;zen-filter  [filterDetails]="filterData"  [filterHeader]="filterHeader"  (onFilterChange)="onFilterChange($event)" [expansionProperty]="expansionProperty"&gt;&lt;/zen-filter&gt;
+</code></pre>
+<p><img src="https://uat.us.images.getzenbasket.com/STORE_67/products/filterHeaderwithourexpans_1725280988163_S67.png" alt="enter image description here"></p>
+<p><strong>Type 4:</strong></p>
+<pre><code>//ts
+expansionProperty: ZenFilterexpansionProperty = {
+    expandMultiple:  true,
+    expandAllByDefault:  true,
+    isPanelHidden:  false,
+    hideFilterReset:  true,
+    hideExpansionBorder:  true,
+    expansionWithBoxShadow:  false
+}
+//html
+&lt;zen-filter  [filterDetails]="filterData"  [filterHeader]="filterHeader"  (onFilterChange)="onFilterChange($event)" [expansionProperty]="expansionProperty"&gt;&lt;/zen-filter&gt;
+</code></pre>
+<p><img src="https://uat.us.images.getzenbasket.com/STORE_67/products/filterwithoutborder_1725282630480_S67.png" alt="enter image description here"></p>
+<p><strong>4. @Output() filterClosed = new  EventEmitter();</strong><br>
+This property emits boolean value when filter tab is closed.</p>
+<p><strong>5. @Output() onFilterChange = new  EventEmitter();</strong><br>
+This property emits selected filter details.<br>
+eg:</p>
+<pre><code>{
+"isPriceRange": {
+    "fromRange": 30,
+    "toRange": 50
+},
+"choosenFruit": "apple",
+"selectedSize": "L",
+"selectCheckBox": {
+    "isPant": true,
+    "isShirt": false,
+    "isTshirt": false
+}
+}
+</code></pre>
+<h2 id="filter-types">Filter Types</h2>
+<h2 id="radio">1. Radio:</h2>
+<p><strong>Properties:</strong><br>
+title: string;                 -&gt; title name of radio group<br>
+type: '<strong>RADIO</strong>	';                -&gt; filter type<br>
+keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
+disabled: boolean;         -&gt; disable whole option group<br>
+options:[<br>
+{value: string | number, label: string, isDefault: boolean, disabled: boolean},<br>
+{value: string | number, label: string, isDefault: boolean, disabled: boolean},<br>
+etc…<br>
+]<br>
+<strong>Code Example:</strong></p>
+<pre><code>//ts
+filterData = [
+	{
+	title: 'Choose Fruit',
+	type: ZenFilterTypes.RADIO,
+	keyToEmit: 'fruitName',
+	disabled: false,
+	options: [
+	{value: 'orange',label:'Orange',isDefault: false,disabled:false},
+	{value: 'apple',label:'Apple',isDefault: true,disabled:false},
+	]
+	}
+}
+//html
+&lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+</code></pre>
+<h2 id="checkbox">2. Checkbox:</h2>
+<p><strong>Properties:</strong><br>
+title: string;                  -&gt; title name of checkbox group<br>
+type: ‘<strong>CHECKBOX</strong>’;         -&gt; filter type<br>
+keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
+disabled: boolean;         -&gt; disable whole checkbox group<br>
+checkbox:[<br>
+{ label: string, keyToEmit: string, isDefault: boolean, disabled: boolean},<br>
+{ label: string, keyToEmit: string, isDefault: boolean, disabled: boolean},<br>
+etc…<br>
+]<br>
+<strong>Code Example:</strong></p>
+<pre><code>//ts
+filterData = [
+	{
+	title: 'Shirt Size',
+	type: ZenFilterTypes.CHECKBOX,
+	keyToEmit: 'shirtSize',
+	disabled: false,
+	checkbox: [
+	{keyToEmit: 'isL',label:'L',isDefault:false,disabled:false},
+	{keyToEmit: 'isXl',label:'Xl',isDefault:true,disabled:false},
+	{keyToEmit: 'isXxl',label:'Xxl',isDefault:false,disabled:false}
+	]
+	}
+	}
+]
+//html
+&lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+</code></pre>
+<h2 id="textbox">3. Textbox:</h2>
+<p><strong>Properties:</strong><br>
+title: string;                  -&gt; title name of textbox<br>
+type: ‘<strong>TEXT</strong>’;                  -&gt; filter type<br>
+keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
+fieldLabel: string         -&gt; textbox label name<br>
+disabled: boolean;         -&gt; disable textbox<br>
+minLength: number    -&gt; validator for minimum length<br>
+maxLength: number   -&gt; validator for maximum length</p>
+<p><strong>Code Example:</strong></p>
+<pre><code>//ts
+filterData = [
+	{
+	title:  'Search Name',
+	type:  ZenFilterTypes.TEXT,
+	keyToEmit:  'searchName',
+	fieldLabel:  'Enter Name',
+	minLength:  2,
+	maxLength:  5,
+	disabled:  false
+	}
+]
+//html
+&lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+</code></pre>
+<h2 id="numeric">4. Numeric:</h2>
+<p><strong>Properties:</strong><br>
+title: string;                  -&gt; title name of numeric textbox<br>
+type: ‘<strong>NUMERIC</strong>’;    	     -&gt; filter type<br>
+keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
+fieldLabel: string         -&gt; textbox label name<br>
+disabled: boolean;         -&gt; disable textbox<br>
+minValue: number;       -&gt; validator for minimum value<br>
+maxValue: number;      -&gt; validator for maximum value</p>
+<p><strong>Code Example:</strong></p>
+<pre><code>//ts
+filterData = [
+	{
+	title:  'Search Order id',
+	type:  ZenFilterTypes.NUMERIC,
+	keyToEmit:  'searchId',
+	fieldLabel:  'Enter Order Id',
+	minValue:  2,
+	maxValue:  5,
+	disable:  false
+	}
+]
+//html
+&lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+</code></pre>
+<h2 id="numericrange">5. NumericRange:</h2>
+<p><strong>Properties:</strong><br>
+title: string;                  -&gt; title name of numeric range textbox<br>
+type: ‘<strong>NUMERICRANGE</strong>’;    	     -&gt; filter type<br>
+keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
+fieldLabel: string         -&gt; textbox label name<br>
+disabled: boolean;         -&gt; disable textbox<br>
+minValue: number;       -&gt; validator for minimum value<br>
+maxValue: number;      -&gt; validator for maximum value</p>
+<p><strong>Code Example:</strong></p>
+<pre><code>//ts
+filterData = [
+	{
+	title:  'Price range',
+	type:  ZenFilterTypes.NUMERICRANGE,
+	keyToEmit:  'priceAmount',
+	fieldLabel:  'Enter range',
+	minValue:  2,
+	maxValue:  100,
+	disabled:  false
+	}
+]
+//html
+&lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+</code></pre>
+<h2 id="single-dropdown">6.  Single Dropdown</h2>
+<p><strong>Properties:</strong><br>
+title: string;                  -&gt; title name of numeric range textbox<br>
+type: ‘<strong>SINGLEDROPDOWN</strong>’;    	     -&gt; filter type<br>
+keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
+fieldLabel: string         -&gt; textbox label name<br>
+disabled: boolean;         -&gt; disable textbox<br>
+options: [];</p>
+<p><strong>Code Example:</strong></p>
+<pre><code>//ts
+filterData = [
+	{
+	title:  'Select Vegetables',
+	type:  FilterTypes.SINGLEDROPDOWN,
+	keyToEmit:  'vegetable',
+	fieldLabel:  'Choose Vegetable',
+	disabled:  false,
+	options: [
+	{value: 1,label:'Brinjal',isDefault: false, disabled:false},
+	{value: 2,label:'Radish	',isDefault: true, disabled:false},
+	]
+	}
+]
+//html
+&lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+</code></pre>
+<h2 id="basic-slider">7.  Basic slider</h2>
+<p><strong>Properties:</strong><br>
+title: string;                  -&gt; title name of numeric range textbox<br>
+type: ‘<strong>SLIDER</strong>’;    	     -&gt; filter type<br>
+keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
+disabled: boolean;         -&gt; disable textbox<br>
+slider: {<br>
+type: ‘basic’,    -&gt; slider type<br>
+value: number, -&gt; slider default value<br>
+minRange: number, -&gt; slider min value<br>
+maxRange: number, -&gt; slider max value<br>
+currencyUnit?: ‘USD’ -&gt; if you want to display currency symbol near value then it can be used<br>
+}</p>
+<p><strong>Code Example:</strong></p>
+<pre><code>//ts
+filterData = [
+	{
+	title:  'Choose size',
+	type:  ZenFilterTypes.SLIDER,
+	keyToEmit:  'size',
+	disabled:  false,
+	slider: {
+		type: 'basic'
+		value: 5,
+		minRange: 1,
+		maxRange: 100
+	}
+]
+//html
+&lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+</code></pre>
+<h2 id="range-slider">7.  Range slider</h2>
+<p><strong>Properties:</strong><br>
+title: string;                  -&gt; title name of numeric range textbox<br>
+type: ‘<strong>SLIDER</strong>’;    	     -&gt; filter type<br>
+keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
+disabled: boolean;         -&gt; disable textbox<br>
+slider: {<br>
+type: ‘range’,    -&gt; slider type<br>
+fromValue: number, -&gt; slider default from value<br>
+toValue: number, -&gt; slider default to value<br>
+minRange: number, -&gt; slider min value<br>
+maxRange: number, -&gt; slider max value<br>
+currencyUnit?: ‘USD’ -&gt; if you want to display currency symbol near value then it can be used<br>
+}</p>
+<p><strong>Code Example:</strong></p>
+<pre><code>//ts
+filterData = [
+	{
+	title:  'Choose Price Range',
+	type:  ZenFilterTypes.SLIDER,
+	keyToEmit:  'priceValue',
+	disabled:  false,
+	slider: {
+		type: 'range'
+		fromValue: 45,
+		toValue: 65
+		minRange: 10,
+		maxRange: 100,
+		currencyUnit: 'INR'
+	}
+]
+//html
+&lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+</code></pre>
+</div>
+</body>
+
+</html>

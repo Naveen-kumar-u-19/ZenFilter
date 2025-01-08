@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -201,7 +201,6 @@ filterData = [
 	{keyToEmit: 'isXxl',label:'Xxl',isDefault:false,disabled:false}
 	]
 	}
-	}
 ]
 //html
 &lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
@@ -294,7 +293,7 @@ options: [];</p>
 filterData = [
 	{
 	title:  'Select Vegetables',
-	type:  FilterTypes.SINGLEDROPDOWN,
+	type:  ZenFilterTypes.SINGLEDROPDOWN,
 	keyToEmit:  'vegetable',
 	fieldLabel:  'Choose Vegetable',
 	disabled:  false,
@@ -329,11 +328,12 @@ filterData = [
 	keyToEmit:  'size',
 	disabled:  false,
 	slider: {
-		type: 'basic'
+		type: 'basic',
 		value: 5,
 		minRange: 1,
 		maxRange: 100
-	}
+	} as  ZenFilterSlider
+	}	
 ]
 //html
 &lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
@@ -367,6 +367,34 @@ filterData = [
 		minRange: 10,
 		maxRange: 100,
 		currencyUnit: 'INR'
+	}
+]
+//html
+&lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+</code></pre>
+<h2 id="date-picker">8.  Date Picker</h2>
+<p><strong>Properties:</strong><br>
+title: string;                  -&gt; title name of numeric range textbox<br>
+type: ‘<strong>DATEPICKER</strong>’;    	     -&gt; filter type<br>
+keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
+disabled: boolean;         -&gt; disable textbox<br>
+dateOptions: {<br>
+defaultStartDate: Date || String,    -&gt; slider type<br>
+minStartDate: Date || String, -&gt; slider default from value<br>
+maxStartDate: Date || String, -&gt; slider default to value<br>
+}</p>
+<p><strong>Code Example:</strong></p>
+<pre><code>//ts
+filterData = [
+	{
+	title:  'Choose Date',
+	type:  ZenFilterTypes.DATEPICKER,
+	keyToEmit:  'date',
+	disabled:  false,
+	dateOptions: {
+		defaultStartDate: new  Date(),
+		maxStartDate: '01-10-2025',
+		minStartDate: '01-02-2025'
 	}
 ]
 //html

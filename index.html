@@ -379,9 +379,9 @@ type: ‘<strong>DATEPICKER</strong>’;    	     -&gt; filter type<br>
 keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
 disabled: boolean;         -&gt; disable textbox<br>
 dateOptions: {<br>
-defaultStartDate: Date || String,    -&gt; slider type<br>
-minStartDate: Date || String, -&gt; slider default from value<br>
-maxStartDate: Date || String, -&gt; slider default to value<br>
+defaultStartDate: Date || String,    -&gt; default start date<br>
+minStartDate: Date || String, -&gt;min date<br>
+maxStartDate: Date || String, -&gt; max date<br>
 }</p>
 <p><strong>Code Example:</strong></p>
 <pre><code>//ts
@@ -395,6 +395,37 @@ filterData = [
 		defaultStartDate: new  Date(),
 		maxStartDate: '01-10-2025',
 		minStartDate: '01-02-2025'
+	}
+]
+//html
+&lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+</code></pre>
+<h2 id="date-range-picker">9.  Date Range Picker</h2>
+<p><strong>Properties:</strong><br>
+title: string;                  -&gt; title name of numeric range textbox<br>
+type: ‘<strong>DATERANGEPICKER</strong>’;    	     -&gt; filter type<br>
+keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
+disabled: boolean;         -&gt; disable textbox<br>
+dateOptions: {<br>
+defaultStartDate: Date || String,    -&gt; default start date<br>
+defaultEndDate: Date || String -  default end date<br>
+minStartDate: Date || String, -&gt; min start date<br>
+maxStartDate: Date || String, -&gt; max start date<br>
+}</p>
+<p><strong>Code Example:</strong></p>
+<pre><code>//ts
+filterData = [
+	{
+		title:  'Choose Daterange',
+		type:  ZenFilterTypes.DATERANGEPICKER,
+		keyToEmit:  'Date range',
+		fieldLabel:  'Choose current date',
+		disabled:  false,
+		dateOptions: {
+			defaultStartDate:  new  Date(),
+			defaultEndDate:  new  Date(),
+			maxStartDate:  new  Date()
+		}
 	}
 ]
 //html

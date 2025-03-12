@@ -4,13 +4,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zen-filter</title>
+  <title>Zen-filter (1).html</title>
   <link rel="stylesheet" href="https://stackedit.io/style.css" />
 </head>
 
 <body class="stackedit">
-  <div class="stackedit__html"><h1 id="zen-filter">Zen Filter</h1>
-<p><strong>Component Name:</strong>  ZenFilterComponent.<br>
+  <div class="stackedit__html"><p>Zen-filter (3).md</p>
+<h1 id="zen-filter">Zen Filter</h1>
+<p><strong>Component Name:</strong> ZenFilterComponent.<br>
 <strong>Module Name:</strong> Zen Core</p>
 <h2 id="introduction">Introduction</h2>
 <p>The Zen Filter component used to display filters in various places, such as storefront product lists and admin-side list pages.</p>
@@ -43,10 +44,11 @@ options: [
 
 //Html
 &lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+
 </code></pre>
 <p><strong>2. @Input() filterHeader</strong><br>
 It is not required, but we can customize our filter headers using the below properties.<br>
-hideHeader -  It is used to hide filter header.<br>
+hideHeader - It is used to hide filter header.<br>
 hideFilterHeading - It is used to hide filter heading.<br>
 heading - It is used to change filter heading name.<br>
 resetAllIconToolTip- It is used to change reset all icon tooltip name.<br>
@@ -55,19 +57,20 @@ hideFilterCount - It is used to hide filter count.<br>
 emitWithOutButton - It is used to emit filter details without button.<br>
 filterSelectedMessage - It is used to change filter selected messages.<br>
 showSelectedFilter - It is used to selected filter label in chip.<br>
-applyButtonText -  //It is used to change apply button text<br>
+applyButtonText - //It is used to change apply button text<br>
 saveButtonText - //It is used to change save filter button text<br>
 resetIconToolTip - //It is used to change reset icon name in expansion</p>
 <pre><code>//Ts
 filterHeader: ZenFilterHeaders = { heading: 'My Filter', resetIconToolTip: 'Refresh filter', closeIconToolTip: 'Close filter', hideFilterCount: false, emitWithOutButton: false, showSelectedFilter: true, filterSelectedMessage: Filter Selected', hideHeader: false, hideFilterHeading: false}
 //Html
 &lt;zen-filter  [filterDetails]="filterData"  [filterHeader]="filterHeader"  (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+
 </code></pre>
 <p><img src="https://uat.us.images.getzenbasket.com/STORE_67/products/filterheader_1725273349669_S67.png" alt="enter image description here"></p>
 <p><strong>3. @Input() expansionProperty</strong><br>
-It is used to change the expansion panel design.  Its properties are mentioned below.<br>
+It is used to change the expansion panel design. Its properties are mentioned below.<br>
 expandMultiple - used to open multiple expansion panels.<br>
-expandAllByDefault -  used to expand all expansion panels by default.<br>
+expandAllByDefault - used to expand all expansion panels by default.<br>
 hideExpansion - used to hide the expansion panel.<br>
 hideFilterReset- used to hide the refresh icon in the expansion panel.<br>
 hideExpansionBorder - used to hide expansion panel border.<br>
@@ -84,6 +87,7 @@ expansionProperty: ZenFilterexpansionProperty = {
 }
 //html
 &lt;zen-filter  [filterDetails]="filterData"  [filterHeader]="filterHeader"  (onFilterChange)="onFilterChange($event)" [expansionProperty]="expansionProperty"&gt;&lt;/zen-filter&gt;
+
 </code></pre>
 <p><img src="https://i.ibb.co/NWr5hvX/image-2024-11-15-T12-22-11-382-Z.png" alt="enter image description here"></p>
 <p><strong>Type2:</strong></p>
@@ -98,6 +102,7 @@ expansionProperty: ZenFilterexpansionProperty = {
 }
 //html
 &lt;zen-filter  [filterDetails]="filterData"  [filterHeader]="filterHeader"  (onFilterChange)="onFilterChange($event)" [expansionProperty]="expansionProperty"&gt;&lt;/zen-filter&gt;
+
 </code></pre>
 <p>![enter image description here](<img src="https://uat.us.images.getzenbasket.com/STORE_67/products/filterwithboxshadow_1725278247497_S67.png" alt="https://uat.us.images.getzenbasket.com/STORE_67/products/filterwithboxshadow_1725278247497_S67.png"></p>
 <p><strong>Type 3:</strong></p>
@@ -112,6 +117,7 @@ expansionProperty: ZenFilterexpansionProperty = {
 }
 //html
 &lt;zen-filter  [filterDetails]="filterData"  [filterHeader]="filterHeader"  (onFilterChange)="onFilterChange($event)" [expansionProperty]="expansionProperty"&gt;&lt;/zen-filter&gt;
+
 </code></pre>
 <p><img src="https://uat.us.images.getzenbasket.com/STORE_67/products/filterHeaderwithourexpans_1725280988163_S67.png" alt="enter image description here"></p>
 <p><strong>Type 4:</strong></p>
@@ -126,11 +132,12 @@ expansionProperty: ZenFilterexpansionProperty = {
 }
 //html
 &lt;zen-filter  [filterDetails]="filterData"  [filterHeader]="filterHeader"  (onFilterChange)="onFilterChange($event)" [expansionProperty]="expansionProperty"&gt;&lt;/zen-filter&gt;
+
 </code></pre>
 <p><img src="https://uat.us.images.getzenbasket.com/STORE_67/products/filterwithoutborder_1725282630480_S67.png" alt="enter image description here"></p>
-<p><strong>4. @Output() filterClosed = new  EventEmitter();</strong><br>
+<p><strong>4. @Output() filterClosed = new EventEmitter();</strong><br>
 This property emits boolean value when filter tab is closed.</p>
-<p><strong>5. @Output() onFilterChange = new  EventEmitter();</strong><br>
+<p><strong>5. @Output() onFilterChange = new EventEmitter();</strong><br>
 This property emits selected filter details.<br>
 eg:</p>
 <pre><code>{
@@ -146,6 +153,7 @@ eg:</p>
     "isTshirt": false
 }
 }
+
 </code></pre>
 <p><strong>6. @Input() savedFilterDetails</strong><br>
 This input is used to show the saved filter option on zen filter. Its properties are mentioned below.<br>
@@ -154,58 +162,59 @@ eg:<br>
 import { GET_ALL_SAVED_FILTERS, CREATE_SAVED_FILTERS, CHECK_DUPLICATE_FITER_NAME, DELETE_SAVED_FILTER } from “@zba/shared/queries/zen-filter.query”</p>
 <p><strong>Properties:</strong></p>
 <ol>
+<li>service - Zen filter service name.</li>
 <li>getApiDetails - Input for getting saved filter details.</li>
 <li>createApiDetails - Input for creating a new saved filter.</li>
 <li>deleteApiDetails - Input to delete a single filter.</li>
+<li>checkDuplicateFilterName - input for async validation.</li>
 </ol>
 <p><strong>Model:</strong> SavedFilterDetails</p>
 <p>eg:</p>
 <pre><code>savedFilterDetails: SavedFilterDetails = {
-getApiDetails: {
-query: GET_ALL_SAVED_FILTERS, //get query for saved filter,
-inputDetails: {
-  input: {
-	storeId:  //storeid,
-	code: //filtercode(ie,'ORDER_FILTER')
+  service: //Service name (eg,ZenFilterService)
+  getApiDetails: {
+	query: GET_ALL_SAVED_FILTERS, //get query for saved filter,
+	inputDetails: {
+	  input: {
+		storeId:  //storeid,
+		code: //filtercode(ie,'ORDER_FILTER')
+	  }
+	}
+  },
+  createApiDetails: {
+	query: CREATE_SAVED_FILTERS, //create query for saved filter,
+	inputDetails: {
+	  input: {
+		storeId:  //storeid,
+		code: //filtercode(ie,'ORDER_FILTER')
+	  }
+	}
+  },
+  deleteApiDetails: {
+	query: DELETE_SAVED_FILTER,  //delete query for saved filter,
+	inputDetails: {
+	  input: {
+		storeId:  //storeid,
+		code: //filtercode(ie,'ORDER_FILTER')
+	  }
+	}
+  },
+  checkDuplicateFilterName: {
+	query: CHECK_DUPLICATE_FITER_NAME, //delete query for saved filter,
+	inputDetails: {
+	  input: {} //no input required for this
+	}
   }
 }
-},  
 
-createApiDetails: {
-query: CREATE_SAVED_FILTERS, //create query for saved filter,
-inputDetails: {
-  input: {
-	storeId:  //storeid,
-	code: //filtercode(ie,'ORDER_FILTER')
-  }
-}
-},
-
-deleteApiDetails: {
-query: DELETE_SAVED_FILTER,  //delete query for saved filter,
-inputDetails: {
-  input: {
-	storeId:  //storeid,
-	code: //filtercode(ie,'ORDER_FILTER')
-  }
-}  
-}, 
-
-checkDuplicateFilterName: {
-query: CHECK_DUPLICATE_FITER_NAME, //delete query for saved filter,
-inputDetails: {
-  input: {} //no input required for this
-}
-}
-}
 </code></pre>
 <h2 id="filter-types">Filter Types</h2>
 <h2 id="radio">1. Radio:</h2>
 <p><strong>Properties:</strong><br>
-title: string;                 -&gt; title name of radio group<br>
-type: '<strong>RADIO</strong>	';                -&gt; filter type<br>
-keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
-disabled: boolean;         -&gt; disable whole option group<br>
+title: string; -&gt; title name of radio group<br>
+type: '<strong>RADIO</strong> '; -&gt; filter type<br>
+keyToEmit: string; -&gt; field name where the output will be assigned there<br>
+disabled: boolean; -&gt; disable whole option group<br>
 options:[<br>
 {value: string | number, label: string, isDefault: boolean, disabled: boolean},<br>
 {value: string | number, label: string, isDefault: boolean, disabled: boolean},<br>
@@ -227,13 +236,14 @@ filterData = [
 }
 //html
 &lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+
 </code></pre>
 <h2 id="checkbox">2. Checkbox:</h2>
 <p><strong>Properties:</strong><br>
-title: string;                  -&gt; title name of checkbox group<br>
-type: ‘<strong>CHECKBOX</strong>’;         -&gt; filter type<br>
-keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
-disabled: boolean;         -&gt; disable whole checkbox group<br>
+title: string; -&gt; title name of checkbox group<br>
+type: ‘<strong>CHECKBOX</strong>’; -&gt; filter type<br>
+keyToEmit: string; -&gt; field name where the output will be assigned there<br>
+disabled: boolean; -&gt; disable whole checkbox group<br>
 checkbox:[<br>
 { label: string, keyToEmit: string, isDefault: boolean, disabled: boolean},<br>
 { label: string, keyToEmit: string, isDefault: boolean, disabled: boolean},<br>
@@ -256,16 +266,17 @@ filterData = [
 ]
 //html
 &lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+
 </code></pre>
 <h2 id="textbox">3. Textbox:</h2>
 <p><strong>Properties:</strong><br>
-title: string;                  -&gt; title name of textbox<br>
-type: ‘<strong>TEXT</strong>’;                  -&gt; filter type<br>
-keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
-fieldLabel: string         -&gt; textbox label name<br>
-disabled: boolean;         -&gt; disable textbox<br>
-minLength: number    -&gt; validator for minimum length<br>
-maxLength: number   -&gt; validator for maximum length</p>
+title: string; -&gt; title name of textbox<br>
+type: ‘<strong>TEXT</strong>’; -&gt; filter type<br>
+keyToEmit: string; -&gt; field name where the output will be assigned there<br>
+fieldLabel: string -&gt; textbox label name<br>
+disabled: boolean; -&gt; disable textbox<br>
+minLength: number -&gt; validator for minimum length<br>
+maxLength: number -&gt; validator for maximum length</p>
 <p><strong>Code Example:</strong></p>
 <pre><code>//ts
 filterData = [
@@ -281,16 +292,17 @@ filterData = [
 ]
 //html
 &lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+
 </code></pre>
 <h2 id="numeric">4. Numeric:</h2>
 <p><strong>Properties:</strong><br>
-title: string;                  -&gt; title name<br>
-type: ‘<strong>NUMERIC</strong>’;    	     -&gt; filter type<br>
-keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
-fieldLabel: string         -&gt; textbox label name<br>
-disabled: boolean;         -&gt; disable textbox<br>
-minValue: number;       -&gt; validator for minimum value<br>
-maxValue: number;      -&gt; validator for maximum value</p>
+title: string; -&gt; title name<br>
+type: ‘<strong>NUMERIC</strong>’; -&gt; filter type<br>
+keyToEmit: string; -&gt; field name where the output will be assigned there<br>
+fieldLabel: string -&gt; textbox label name<br>
+disabled: boolean; -&gt; disable textbox<br>
+minValue: number; -&gt; validator for minimum value<br>
+maxValue: number; -&gt; validator for maximum value</p>
 <p><strong>Code Example:</strong></p>
 <pre><code>//ts
 filterData = [
@@ -306,16 +318,17 @@ filterData = [
 ]
 //html
 &lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+
 </code></pre>
 <h2 id="numericrange">5. NumericRange:</h2>
 <p><strong>Properties:</strong><br>
-title: string;                  -&gt; title name<br>
-type: ‘<strong>NUMERICRANGE</strong>’;    	     -&gt; filter type<br>
-keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
-fieldLabel: string         -&gt; textbox label name<br>
-disabled: boolean;         -&gt; disable textbox<br>
-minValue: number;       -&gt; validator for minimum value<br>
-maxValue: number;      -&gt; validator for maximum value</p>
+title: string; -&gt; title name<br>
+type: ‘<strong>NUMERICRANGE</strong>’; -&gt; filter type<br>
+keyToEmit: string; -&gt; field name where the output will be assigned there<br>
+fieldLabel: string -&gt; textbox label name<br>
+disabled: boolean; -&gt; disable textbox<br>
+minValue: number; -&gt; validator for minimum value<br>
+maxValue: number; -&gt; validator for maximum value</p>
 <p><strong>Code Example:</strong></p>
 <pre><code>//ts
 filterData = [
@@ -331,14 +344,15 @@ filterData = [
 ]
 //html
 &lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+
 </code></pre>
-<h2 id="single-dropdown">6.  Single Dropdown</h2>
+<h2 id="single-dropdown">6. Single Dropdown</h2>
 <p><strong>Properties:</strong><br>
-title: string;                  -&gt; title name<br>
-type: ‘<strong>SINGLEDROPDOWN</strong>’;    	     -&gt; filter type<br>
-keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
-fieldLabel: string         -&gt; textbox label name<br>
-disabled: boolean;         -&gt; disable textbox<br>
+title: string; -&gt; title name<br>
+type: ‘<strong>SINGLEDROPDOWN</strong>’; -&gt; filter type<br>
+keyToEmit: string; -&gt; field name where the output will be assigned there<br>
+fieldLabel: string -&gt; textbox label name<br>
+disabled: boolean; -&gt; disable textbox<br>
 options: [];</p>
 <p><strong>Code Example:</strong></p>
 <pre><code>//ts
@@ -357,15 +371,16 @@ filterData = [
 ]
 //html
 &lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+
 </code></pre>
-<h2 id="basic-slider">7.  Basic slider</h2>
+<h2 id="basic-slider">7. Basic slider</h2>
 <p><strong>Properties:</strong><br>
-title: string;                  -&gt; title name<br>
-type: ‘<strong>SLIDER</strong>’;    	     -&gt; filter type<br>
-keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
-disabled: boolean;         -&gt; disable textbox<br>
+title: string; -&gt; title name<br>
+type: ‘<strong>SLIDER</strong>’; -&gt; filter type<br>
+keyToEmit: string; -&gt; field name where the output will be assigned there<br>
+disabled: boolean; -&gt; disable textbox<br>
 slider: {<br>
-type: ‘basic’,    -&gt; slider type<br>
+type: ‘basic’, -&gt; slider type<br>
 value: number, -&gt; slider default value<br>
 minRange: number, -&gt; slider min value<br>
 maxRange: number, -&gt; slider max value<br>
@@ -389,15 +404,16 @@ filterData = [
 ]
 //html
 &lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+
 </code></pre>
-<h2 id="range-slider">7.  Range slider</h2>
+<h2 id="range-slider">7. Range slider</h2>
 <p><strong>Properties:</strong><br>
-title: string;                  -&gt; title name<br>
-type: ‘<strong>SLIDER</strong>’;    	     -&gt; filter type<br>
-keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
-disabled: boolean;         -&gt; disable textbox<br>
+title: string; -&gt; title name<br>
+type: ‘<strong>SLIDER</strong>’; -&gt; filter type<br>
+keyToEmit: string; -&gt; field name where the output will be assigned there<br>
+disabled: boolean; -&gt; disable textbox<br>
 slider: {<br>
-type: ‘range’,    -&gt; slider type<br>
+type: ‘range’, -&gt; slider type<br>
 fromValue: number, -&gt; slider default from value<br>
 toValue: number, -&gt; slider default to value<br>
 minRange: number, -&gt; slider min value<br>
@@ -423,15 +439,16 @@ filterData = [
 ]
 //html
 &lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+
 </code></pre>
-<h2 id="date-picker">8.  Date Picker</h2>
+<h2 id="date-picker">8. Date Picker</h2>
 <p><strong>Properties:</strong><br>
-title: string;                  -&gt; title name<br>
-type: ‘<strong>DATEPICKER</strong>’;    	     -&gt; filter type<br>
-keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
-disabled: boolean;         -&gt; disable textbox<br>
+title: string; -&gt; title name<br>
+type: ‘<strong>DATEPICKER</strong>’; -&gt; filter type<br>
+keyToEmit: string; -&gt; field name where the output will be assigned there<br>
+disabled: boolean; -&gt; disable textbox<br>
 dateOptions: {<br>
-defaultStartDate: Date || String,    -&gt; default start date<br>
+defaultStartDate: Date || String, -&gt; default start date<br>
 minStartDate: Date || String, -&gt;min date<br>
 maxStartDate: Date || String, -&gt; max date<br>
 }</p>
@@ -451,16 +468,17 @@ filterData = [
 ]
 //html
 &lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+
 </code></pre>
-<h2 id="date-range-picker">9.  Date Range Picker</h2>
+<h2 id="date-range-picker">9. Date Range Picker</h2>
 <p><strong>Properties:</strong><br>
-title: string;                  -&gt; title name<br>
-type: ‘<strong>DATERANGEPICKER</strong>’;    	     -&gt; filter type<br>
-keyToEmit: string;				 -&gt; field name where the output will be assigned there<br>
-disabled: boolean;         -&gt; disable<br>
+title: string; -&gt; title name<br>
+type: ‘<strong>DATERANGEPICKER</strong>’; -&gt; filter type<br>
+keyToEmit: string; -&gt; field name where the output will be assigned there<br>
+disabled: boolean; -&gt; disable<br>
 dateOptions: {<br>
-defaultStartDate: Date || String,    -&gt; default start date<br>
-defaultEndDate: Date || String -  default end date<br>
+defaultStartDate: Date || String, -&gt; default start date<br>
+defaultEndDate: Date || String - default end date<br>
 minStartDate: Date || String, -&gt; min start date<br>
 maxStartDate: Date || String, -&gt; max start date<br>
 }</p>
@@ -482,6 +500,7 @@ filterData = [
 ]
 //html
 &lt;zen-filter  [filterDetails]="filterData" (onFilterChange)="onFilterChange($event)"&gt;&lt;/zen-filter&gt;
+
 </code></pre>
 </div>
 </body>
